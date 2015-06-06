@@ -14,7 +14,7 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var txtDur : UITextField!
     @IBOutlet var txtTime : UISegmentedControl!
     
-    var new = true;
+    var itemnotexist = true;
     var index : Int?
     
 
@@ -27,7 +27,7 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        if !new {
+        if !itemnotexist {
             if let i = index {
                 txtTask.text = taskMgr.tasks[i].name
                 txtDur.text = "\(taskMgr.tasks[i].dur)"
@@ -61,7 +61,7 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate {
             
             
             
-            if new {
+            if itemnotexist {
                 taskMgr.addTask(txtTask.text, dur: dur, timeformat: txtTime.selectedSegmentIndex)
             } else {
                 
@@ -132,6 +132,8 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate {
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.view.endEditing(true)
     }
+    
+    override func touches
     
     //UI Text Field Delegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
