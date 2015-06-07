@@ -39,7 +39,7 @@ class DateViewController: UIViewController {
         
         
         let title = "Selected Time/Date"
-        let message = "You have selected \(datePicker.date)"
+        let message = "You have selected \(self.datePicker.date.localTime)"
         let alertController = UIAlertController(title: "Cancel", message: message, preferredStyle: .Alert)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
@@ -47,6 +47,7 @@ class DateViewController: UIViewController {
         let okayAction = UIAlertAction(title: "Confirm", style: .Default) {
             action in
             date  = self.datePicker.date
+            
             self.dismissViewControllerAnimated(true, completion: nil)
         }
         
@@ -68,6 +69,7 @@ class DateViewController: UIViewController {
         
         segmentDates.selectedSegmentIndex = 0
         datePicker.datePickerMode = .Time
+        datePicker.timeZone = NSTimeZone(abbreviation: "CDT")
         datePicker.minimumDate = NSDate()
 
         // Do any additional setup after loading the view.

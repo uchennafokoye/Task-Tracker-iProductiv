@@ -69,7 +69,6 @@
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="     Start Date: "/>
                                 <connections>
-                                    <action selector="dateBtnClck:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="q1O-Cy-8fO"/>
                                     <segue destination="wom-Ns-Msr" kind="show" id="k5T-5B-EMy"/>
                                 </connections>
                             </button>
@@ -267,7 +266,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WtU-QN-rIW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="761" y="573"/>
+            <point key="canvasLocation" x="786" y="576"/>
         </scene>
         <!--Preferences View Controller-->
         <scene sceneID="skD-Tx-XsN">

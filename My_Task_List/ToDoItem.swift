@@ -43,18 +43,22 @@ class TodoList {
     
     private let ITEMS_KEY = "todoItems"
     
-    func addItem(item: TodoItem) {
+    
+    
+    
+    func addNotificationEnd(item: TodoItem) {
         var todoDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(ITEMS_KEY) ?? Dictionary()
         
         todoDictionary[item.UUID] = ["end": item.end, "title": item.title, "UUID": item.UUID]
         NSUserDefaults.standardUserDefaults().setObject(todoDictionary, forKey: ITEMS_KEY)
         
         var notification = UILocalNotification()
-        notification.alertBody = "Todo Item \"\(item.title)\" is Overdue"
+        notification.category = "TODO_CATEGORY"
+        notification.alertBody = "You should be wrapping up with \"\(item.title)\""
         notification.alertAction = "open"
+        notification.timeZone = NSTimeZone(abbreviation: "CDT")
         notification.fireDate = item.end
-        println("This is the begining: \(item.start)")
-        println("This is the end: \(item.end)")
+        println(notification)
         notification.soundName = UILocalNotificationDefaultSoundName
         notification.userInfo = ["UUID": item.UUID,]
         notification.category = "iProductiv Schedule"
@@ -67,16 +71,19 @@ class TodoList {
     }
     
     
-    func addItemForStart(item: TodoItem) {
+    func addNotificationStart(item: TodoItem) {
         var todoDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(ITEMS_KEY) ?? Dictionary()
         
         todoDictionary[item.UUID] = ["start": item.start, "title": item.title, "UUID": item.UUID]
         NSUserDefaults.standardUserDefaults().setObject(todoDictionary, forKey: ITEMS_KEY)
         
         var notification = UILocalNotification()
-        notification.alertBody = "Todo Item \"\(item.title)\" is About to Begin"
+        notification.category = "TODO_CATEGORY"
+
+        notification.alertBody = "Time to start: \"\(item.title)\""
         notification.alertAction = "open"
         notification.fireDate = item.start
+        println(notification)
         notification.soundName = UILocalNotificationDefaultSoundName
         notification.userInfo = ["UUID": item.UUID,]
         notification.category = "iProductiv Schedule"

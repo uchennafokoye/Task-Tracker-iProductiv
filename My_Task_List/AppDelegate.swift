@@ -16,6 +16,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        
+        let completeAction = UIMutableUserNotificationAction()
+        completeAction.identifier = "COMPLETE_TODO"
+        completeAction.title = "Complete"
+        completeAction.activationMode = .Background
+        completeAction.authenticationRequired = false
+        completeAction.destructive = true
+        
+        
+        let remindAction = UIMutableUserNotificationAction()
+        remindAction.identifier = "REMIND"
+        remindAction.title = "Remind in \(mysettings.snoozeNo) minutes"
+        remindAction.activationMode = .Background
+        remindAction.destructive = false
+        
+        
+        let todoCategory = UIMutableUserNotificationCategory()
+        todoCategory.identifier = "TODO_CATEGORY"
+        todoCategory.setActions([remindAction, completeAction
+        ], forContext: .Default)
+        todoCategory.setActions([completeAction, remindAction], forContext: .Minimal)
+        
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: .Alert | .Badge | .Sound, categories: nil))
             
             
@@ -24,6 +46,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillResignActive(application: UIApplication) {
+        
+        var tasks = taskMgr.allItems()
+        
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }

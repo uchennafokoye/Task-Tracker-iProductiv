@@ -9,7 +9,12 @@
 import UIKit
 
 
-
+extension NSDate {
+    var localTime: String {
+        return descriptionWithLocale(NSLocale.currentLocale())!
+    }
+    
+}
 
 
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -64,6 +69,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
     //Returning to view
     
@@ -173,24 +180,31 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
-
-    @IBAction func dateBtnClck(sender: UIButton) {
-        var formatter = NSDateFormatter()
-        formatter.dateFormat = "MM/dd/yy hh:mm a"
-        println(formatter.stringFromDate(date))
-       
-    }
-    
     
     @IBAction func schedule(sender: UIButton) {
         
-        var dateFormatter : NSDateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yy hh:mm a"
-        dateFormatter.timeZone = NSTimeZone(abbreviation: "CDT")
-        var start = dateFormatter.dateFromString(dateLabel.text!)
+      
+        var both = true
+        var startOnly = false
+        var endOnly = false
+        switch mysettings.reminderSegment {
+        case 0:
+            both = false
+            startOnly = true
+            break
+        case 1:
+            both = false
+             endOnly = true
+            break
+        case 2:
+            both = true
+            break
+        default:
+            both = true
+            
+        }
         
-        //var start = date
-        println("This is the date from View: \(date)")
+        var start = date
         var end : NSDate?
         var todoItems = [TodoItem]()
         
@@ -201,11 +215,17 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             var timeInterval = Double((task.timeformat == 0) ? (task.dur * 60) : (task.dur * 60 * 60))
             end = date.dateByAddingTimeInterval(timeInterval)
             
-            todoItems.append(TodoItem(start: start!, end: end!, title: title, UUID: NSUUID().UUIDString))
-            println("This is the begining from View: \(start)")
-            println("This is the end from Input: \(end)")
+            todoItems.append(TodoItem(start: start, end: end!, title: title, UUID: NSUUID().UUIDString))
+    
+            if both {
+                TodoList.sharedInstance.addNotificationEnd(todoItems[i])
+                TodoList.sharedInstance.addNotificationStart(todoItems[i])
+            } else if startOnly {
+                TodoList.sharedInstance.addNotificationStart(todoItems[i])
+            } else {
+                TodoList.sharedInstance.addNotificationEnd(todoItems[i])
+            }
             
-            TodoList.sharedInstance.addItem(todoItems[i])
             
             start = end!
             
@@ -227,6 +247,24 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
+    
+    /*
+
+    func removeItem(item: TodoItem) {
+    for notification in UIApplication.sharedApplication().scheduledLocalNotifications as! [UILocalNotification] { // loop through notifications...
+    if (notification.userInfo!["UUID"] as! String == item.UUID) { // ...and cancel the notification that corresponds to this TodoItem instance (matched by UUID)
+    UIApplication.sharedApplication().cancelLocalNotification(notification) // there should be a maximum of one match on UUID
+    break
+    }
+    }
+    
+    if var todoItems = NSUserDefaults.standardUserDefaults().dictionaryForKey(ITEMS_KEY) {
+    todoItems.removeValueForKey(item.UUID)
+    NSUserDefaults.standardUserDefaults().setObject(todoItems, forKey: ITEMS_KEY) // save/overwrite todo item list
+    }
+    }
+
+*/
     /*
     // MARK: - Navigation
 

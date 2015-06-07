@@ -20,35 +20,7 @@ class settings {
         self.reminderSegment = reminder
         self.inspirationSegment = inspiration
     }
-    /*
-    var snoozeNo : Int {
-        get {
-            return self.snoozeNo
-        }
-        set {
-            self.snoozeNo = newValue
-        }
-    }
-    
-    
-    var reminderSegment : Int {
-        get {
-            return self.reminderSegment
-        } set {
-            self.reminderSegment = newValue
-        }
-    }
-    
-    
-    var inspirationSegment : Int {
-        get {
-            return self.inspirationSegment
-        } set {
-            self.inspirationSegment = newValue
-        }
-    }
-
-*/
+   
     
 }
 
@@ -61,6 +33,7 @@ class SecondViewController: UITableViewController {
     @IBOutlet weak var reminderCell: UITableViewCell!
     @IBOutlet weak var inspirationCell: UITableViewCell!
     
+    @IBOutlet var preferenceTbl: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +41,7 @@ class SecondViewController: UITableViewController {
         reminderCell.detailTextLabel!.text = "Start & End"
         inspirationCell.detailTextLabel!.text = "Art & Quotes"
         
-        
+        preferenceTbl.allowsSelection = false;
 
         // Do any additional setup after loading the view.
     }

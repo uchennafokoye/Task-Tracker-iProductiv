@@ -28,4 +28,8 @@ class TaskManager: NSObject {
     }
     
    
+    
+    func allItems() -> [task] {
+       return tasks
+    }
 }

@@ -11,6 +11,7 @@
 		B00461401B222EFB00B1D07A /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = B004613F1B222EFB00B1D07A /* Checkbox.swift */; };
 		B00461421B222F9000B1D07A /* CheckboxDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00461411B222F9000B1D07A /* CheckboxDelegate.swift */; };
 		B00461441B22414000B1D07A /* preferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00461431B22414000B1D07A /* preferencesViewController.swift */; };
+		B04763321B2399CA00DE902A /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04763311B2399CA00DE902A /* ToDoItem.swift */; };
 		B06850621B1F561A00903F12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06850611B1F561A00903F12 /* AppDelegate.swift */; };
 		B06850641B1F561A00903F12 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06850631B1F561A00903F12 /* ViewController.swift */; };
 		B06850671B1F561A00903F12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B06850651B1F561A00903F12 /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 		B004613F1B222EFB00B1D07A /* Checkbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		B00461411B222F9000B1D07A /* CheckboxDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxDelegate.swift; sourceTree = "<group>"; };
 		B00461431B22414000B1D07A /* preferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = preferencesViewController.swift; sourceTree = "<group>"; };
+		B04763311B2399CA00DE902A /* ToDoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		B068505C1B1F561900903F12 /* My_Task_List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = My_Task_List.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B06850601B1F561900903F12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B06850611B1F561A00903F12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				B06850871B1FDE7600903F12 /* AddTaskViewController.swift */,
 				B06850831B1F598600903F12 /* FirstViewController.swift */,
 				B06850811B1F568600903F12 /* TaskManager.swift */,
+				B04763311B2399CA00DE902A /* ToDoItem.swift */,
 				B004613F1B222EFB00B1D07A /* Checkbox.swift */,
 				B00461411B222F9000B1D07A /* CheckboxDelegate.swift */,
 				B06850681B1F561B00903F12 /* Images.xcassets */,
@@ -241,6 +244,7 @@
 			files = (
 				B004613E1B22235E00B1D07A /* SecondViewController.swift in Sources */,
 				B06850821B1F568600903F12 /* TaskManager.swift in Sources */,
+				B04763321B2399CA00DE902A /* ToDoItem.swift in Sources */,
 				B00461441B22414000B1D07A /* preferencesViewController.swift in Sources */,
 				B00461401B222EFB00B1D07A /* Checkbox.swift in Sources */,
 				B06850881B1FDE7600903F12 /* AddTaskViewController.swift in Sources */,

@@ -63,28 +63,18 @@ class preferencesViewController: UIViewController  {
     
     @IBAction func cancel(sender: UIButton) {
         
-        let title = "Confirm Cancel"
-        let message = "Are you sure you want to cancel"
-        let alertController = UIAlertController(title: "Cancel", message: message, preferredStyle: .Alert)
         
-        let ReturnAction = UIAlertAction(title: "Return", style: .Default, handler: nil)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) {
-            action in
-            
-            self.dismissViewControllerAnimated(true, completion: nil)
-            
-            
-        }
+        self.dismissViewControllerAnimated(true, completion: nil)
         
-        alertController.addAction(cancelAction)
-        alertController.addAction(ReturnAction)
-        
-        
-        presentViewController(alertController, animated: true, completion: nil)
         
         return
 
         
+    }
+   
+    @IBAction func swipeHandler(sender: UISwipeGestureRecognizer) {
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
        /*
     // MARK: - Navigation
