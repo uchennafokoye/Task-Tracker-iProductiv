@@ -58,6 +58,10 @@ class DateViewController: UIViewController {
     }
 
     
+   
+    @IBAction func swipeHandle(sender: UISwipeGestureRecognizer) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

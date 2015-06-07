@@ -8,31 +8,54 @@
 
 import UIKit
 
+
+
+
+
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+
     
     @IBOutlet var tblTasks : UITableView!
     
     @IBOutlet weak var dateBtn: UIButton!
     
     
+    @IBOutlet weak var addBtn: UIButton!
     @IBOutlet weak var dateLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         tblTasks.allowsSelection = true
         tblTasks.allowsSelectionDuringEditing = true
         
         tblTasks.editing = true
         
+        
+        taskMgr.addTask("dance", dur: 30, timeformat: 0)
+       /* taskMgr.addTask("jump", dur: 30, timeformat: 0)
         taskMgr.addTask("dance", dur: 30, timeformat: 0)
         taskMgr.addTask("jump", dur: 30, timeformat: 0)
-
+        taskMgr.addTask("dance", dur: 30, timeformat: 0)
+        taskMgr.addTask("jump", dur: 30, timeformat: 0)
+        taskMgr.addTask("dance", dur: 30, timeformat: 0)
+        taskMgr.addTask("jump", dur: 30, timeformat: 0)
+        taskMgr.addTask("dance", dur: 30, timeformat: 0)
+        taskMgr.addTask("dance", dur: 30, timeformat: 0)
+        taskMgr.addTask("jump", dur: 30, timeformat: 0)
+        taskMgr.addTask("dance", dur: 30, timeformat: 0)
         
-
+*/
         
         var formatter = NSDateFormatter()
-        formatter.dateFormat = "c/dd/yy h:m a"
+        formatter.dateFormat = "MM/dd/yy hh:mm a"
         dateLabel.text = formatter.stringFromDate(date)
+        
+        
+        
+        
 
         // Do any additional setup after loading the view.
     }
@@ -44,11 +67,21 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     //Returning to view
     
+    
+    func verifyaddStatus() {
+        if taskMgr.tasks.count >= 10 {
+            addBtn.enabled = false
+        } else {
+            addBtn.enabled = true
+        }
+    }
     override func viewWillAppear(animated: Bool) {
         tblTasks.reloadData()
         var formatter = NSDateFormatter()
-        formatter.dateFormat = "c/dd/yy h:m a"
+        formatter.dateFormat = "MM/dd/yy hh:mm a"
         dateLabel.text = formatter.stringFromDate(date)
+        verifyaddStatus()
+       
     }
     
     // UITableViewDataSource
@@ -63,12 +96,18 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         if editingStyle == UITableViewCellEditingStyle.Delete {
             taskMgr.tasks.removeAtIndex(indexPath.row)
-            tblTasks.reloadData();
+            tblTasks.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            
+            verifyaddStatus()
+            
+           // tblTasks.reloadData();
+
         }
         
        
         
     }
+    
     
 
     
@@ -92,6 +131,12 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("AddTaskViewController") as AddTaskViewController
+        vc.index = indexPath.row
+        vc.itemnotexist = false
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
     
     
     
@@ -99,22 +144,20 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
         
         
-        var selectedSegText = "hr"
+        var selectedSegText = "min"
         
         
         switch taskMgr.tasks[indexPath.row].timeformat{
             
         case 0:
-            selectedSegText = "hr"
-            break
-            
-        case 1:
             selectedSegText = "min"
             break
             
-        case 2:
-            selectedSegText = "sec"
+        case 1:
+            selectedSegText = "hr"
             break
+            
+    
             
         default:
             break
@@ -124,15 +167,64 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.textLabel?.text = taskMgr.tasks[indexPath.row].name
         cell.detailTextLabel?.text = String(taskMgr.tasks[indexPath.row].dur) + " " + selectedSegText
         
+        cell.textLabel?.font = UIFont(name: "Avenir Next Regular", size: 15.0)
+        cell.detailTextLabel?.font = UIFont(name: "Avenir Next Ultra Light", size: 15.0)
+        
         return cell
     }
     
 
     @IBAction func dateBtnClck(sender: UIButton) {
         var formatter = NSDateFormatter()
-        formatter.dateFormat = "c/dd/yy h:m a"
+        formatter.dateFormat = "MM/dd/yy hh:mm a"
         println(formatter.stringFromDate(date))
        
+    }
+    
+    
+    @IBAction func schedule(sender: UIButton) {
+        
+        var dateFormatter : NSDateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yy hh:mm a"
+        dateFormatter.timeZone = NSTimeZone(abbreviation: "CDT")
+        var start = dateFormatter.dateFromString(dateLabel.text!)
+        
+        //var start = date
+        println("This is the date from View: \(date)")
+        var end : NSDate?
+        var todoItems = [TodoItem]()
+        
+        for (var i = 0; i < taskMgr.tasks.count; i++) {
+            
+            var task = taskMgr.tasks[i]
+            var title = task.name
+            var timeInterval = Double((task.timeformat == 0) ? (task.dur * 60) : (task.dur * 60 * 60))
+            end = date.dateByAddingTimeInterval(timeInterval)
+            
+            todoItems.append(TodoItem(start: start!, end: end!, title: title, UUID: NSUUID().UUIDString))
+            println("This is the begining from View: \(start)")
+            println("This is the end from Input: \(end)")
+            
+            TodoList.sharedInstance.addItem(todoItems[i])
+            
+            start = end!
+            
+        }
+        
+        let title = "iProductiv List Scheduled"
+        let message = "All items scheduled"
+        let alertController = UIAlertController(title: "Cancel", message: message, preferredStyle: .Alert)
+        
+        let cancelAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
+        
+        
+        
+        
+        
+        
     }
     
     /*

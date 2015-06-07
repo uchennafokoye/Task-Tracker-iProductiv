@@ -14,6 +14,7 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var txtDur : UITextField!
     @IBOutlet var txtTime : UISegmentedControl!
     
+    @IBOutlet weak var addorEditBtn: UIButton!
     var itemnotexist = true;
     var index : Int?
     
@@ -32,6 +33,8 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate {
                 txtTask.text = taskMgr.tasks[i].name
                 txtDur.text = "\(taskMgr.tasks[i].dur)"
                 txtTime.selectedSegmentIndex = taskMgr.tasks[i].timeformat
+                
+                addorEditBtn.titleLabel!.text = "Edit"
             }
             
         }
@@ -99,41 +102,29 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    @IBAction func swipeHandle(sender: UISwipeGestureRecognizer) {
+        
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBAction func cancelBtn(sender: UIButton) {
         
-        let title = "Confirm Cancel"
-        let message = "Are you sure you want to cancel"
-        let alertController = UIAlertController(title: "Cancel", message: message, preferredStyle: .Alert)
         
-        let ReturnAction = UIAlertAction(title: "Return", style: .Default, handler: nil)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) {
-            action in
-            
-            self.view.endEditing(true)
-            self.txtTask.text = ""
-            self.txtDur.text = ""
-            
-            self.dismissViewControllerAnimated(true, completion: nil)
-            
-            
-        }
+        self.dismissViewControllerAnimated(true, completion: nil)
         
-        alertController.addAction(cancelAction)
-        alertController.addAction(ReturnAction)
-
-        
-        presentViewController(alertController, animated: true, completion: nil)
         
         return
         
         
     }
+   
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         self.view.endEditing(true)
+
     }
     
-    override func touches
     
     //UI Text Field Delegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
