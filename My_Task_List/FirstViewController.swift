@@ -35,6 +35,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         
         
@@ -136,6 +137,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     override func viewWillAppear(animated: Bool) {
+               
         tblTasks.reloadData()
         var formatter = NSDateFormatter()
         formatter.dateFormat = "MM/dd/yy hh:mm a"
@@ -195,6 +197,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("AddTaskViewController") as AddTaskViewController
         vc.index = indexPath.row
         vc.itemnotexist = false
+        
         self.presentViewController(vc, animated: true, completion: nil)
     }
     
@@ -269,29 +272,10 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             var title = task.name
             var dur =  Double((task.timeformat == 0) ? (task.dur * 60) : (task.dur * 60 * 60))
             iProductivList.todoItems.append(TodoItem(start: start, dur: dur, title: title, UUID: NSUUID().UUIDString, timeformat: task.timeformat))
-            /*
-            var timeInterval = Double((task.timeformat == 0) ? (task.dur * 60) : (task.dur * 60 * 60))
-            end = date.dateByAddingTimeInterval(timeInterval)
-            
-            todoItems.append(TodoItem(start: start, end: end!, title: title, UUID: NSUUID().UUIDString))
-    
-            if both {
-                TodoList.sharedInstance.addNotificationEnd(todoItems[i])
-                TodoList.sharedInstance.addNotificationStart(todoItems[i])
-            } else if startOnly {
-                TodoList.sharedInstance.addNotificationStart(todoItems[i])
-            } else {
-                TodoList.sharedInstance.addNotificationEnd(todoItems[i])
-            }
-            
-            
-            start = end!
-
-*/
             
         }
        
-        iProductivList.scheduleNextBatch()
+        iProductivList.scheduleNextBatch(iProductivList.todoItems[0].start)
         
         
         let title = "iProductiv List Scheduled"
@@ -345,6 +329,9 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         
     }
+    
+    
+    
 
     /*
     // MARK: - Navigation

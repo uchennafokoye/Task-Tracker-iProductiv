@@ -21,7 +21,8 @@
 		B06850861B1FD3A600903F12 /* AddTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06850851B1FD3A500903F12 /* AddTaskTableViewController.swift */; };
 		B06850881B1FDE7600903F12 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06850871B1FDE7600903F12 /* AddTaskViewController.swift */; };
 		B068508A1B2126B300903F12 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06850891B2126B300903F12 /* DateViewController.swift */; };
-		CECCDD251B25177900D8D425 /* QuartzView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCDD241B25177900D8D425 /* QuartzView.swift */; };
+		CE0E3E1F1B262ED800FAF988 /* notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0E3E1E1B262ED800FAF988 /* notifications.swift */; };
+		CEE6CF1C1B2641CB00B3893D /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6CF1B1B2641CB00B3893D /* NotificationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +54,8 @@
 		B06850851B1FD3A500903F12 /* AddTaskTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTaskTableViewController.swift; sourceTree = "<group>"; };
 		B06850871B1FDE7600903F12 /* AddTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		B06850891B2126B300903F12 /* DateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
-		CECCDD241B25177900D8D425 /* QuartzView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuartzView.swift; sourceTree = "<group>"; };
+		CE0E3E1E1B262ED800FAF988 /* notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = notifications.swift; sourceTree = "<group>"; };
+		CEE6CF1B1B2641CB00B3893D /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,10 +100,11 @@
 		B068505E1B1F561900903F12 /* My_Task_List */ = {
 			isa = PBXGroup;
 			children = (
-				CECCDD241B25177900D8D425 /* QuartzView.swift */,
 				B06850611B1F561A00903F12 /* AppDelegate.swift */,
 				B06850631B1F561A00903F12 /* ViewController.swift */,
 				B06850651B1F561A00903F12 /* Main.storyboard */,
+				CEE6CF1B1B2641CB00B3893D /* NotificationViewController.swift */,
+				CE0E3E1E1B262ED800FAF988 /* notifications.swift */,
 				B06850891B2126B300903F12 /* DateViewController.swift */,
 				B06850871B1FDE7600903F12 /* AddTaskViewController.swift */,
 				B06850831B1F598600903F12 /* FirstViewController.swift */,
@@ -241,15 +244,16 @@
 			files = (
 				B004613E1B22235E00B1D07A /* SecondViewController.swift in Sources */,
 				B06850821B1F568600903F12 /* TaskManager.swift in Sources */,
+				CEE6CF1C1B2641CB00B3893D /* NotificationViewController.swift in Sources */,
 				B04763321B2399CA00DE902A /* ToDoItem.swift in Sources */,
 				B00461441B22414000B1D07A /* preferencesViewController.swift in Sources */,
+				CE0E3E1F1B262ED800FAF988 /* notifications.swift in Sources */,
 				B06850881B1FDE7600903F12 /* AddTaskViewController.swift in Sources */,
 				B068508A1B2126B300903F12 /* DateViewController.swift in Sources */,
 				B06850641B1F561A00903F12 /* ViewController.swift in Sources */,
 				B06850621B1F561A00903F12 /* AppDelegate.swift in Sources */,
 				B06850841B1F598600903F12 /* FirstViewController.swift in Sources */,
 				B06850861B1FD3A600903F12 /* AddTaskTableViewController.swift in Sources */,
-				CECCDD251B25177900D8D425 /* QuartzView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

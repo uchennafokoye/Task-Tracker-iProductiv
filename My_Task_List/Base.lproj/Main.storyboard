@@ -7,7 +7,7 @@
         <!--iTasks-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="FirstViewController" customModule="My_Task_List" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FirstViewController" wantsFullScreenLayout="YES" id="vXZ-lx-hvc" customClass="FirstViewController" customModule="My_Task_List" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -91,7 +91,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="iTasks" image="TasksIcon" selectedImage="TasksIcon" id="NLr-ao-Fdx"/>
+                    <tabBarItem key="tabBarItem" title="iTasks" image="TasksIcon" id="NLr-ao-Fdx"/>
                     <connections>
                         <outlet property="addBtn" destination="CUS-xx-ZwK" id="N8w-Tf-IIV"/>
                         <outlet property="cancelNotifBtn" destination="x8Q-Uc-uvz" id="Rck-m4-MPQ"/>
@@ -170,7 +170,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1291" y="142"/>
+            <point key="canvasLocation" x="1118" y="95"/>
         </scene>
         <!--iSettings-->
         <scene sceneID="o55-m2-hvn">
@@ -260,22 +260,22 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Inspiration" id="43J-Dp-STT">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="158" id="o2R-aJ-4cv">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="fO1-PB-VYd">
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o2R-aJ-4cv" id="zQD-2o-Ay3">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fO1-PB-VYd" id="qzA-fu-XEO">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Rz-I0-lqT" customClass="QuartzView" customModule="My_Task_List" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="157"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </view>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B9u-pV-vK5">
+                                                    <rect key="frame" x="151" y="8" width="144" height="30"/>
+                                                    <state key="normal" title="View All Notifications">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <segue destination="Yjg-a4-OAR" kind="show" id="hfY-G7-W0B"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <gestureRecognizers/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -285,18 +285,71 @@
                             <outlet property="delegate" destination="kek-9U-eIo" id="5ZI-hz-PPI"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="iSettings" image="SettingsIcon" selectedImage="/Images.xcassets/SettingsIcon.imageset/rsz_settings_3_filled-50.png" id="hBv-I5-tS9"/>
+                    <tabBarItem key="tabBarItem" title="iSettings" image="SettingsIcon" id="hBv-I5-tS9"/>
                     <connections>
                         <outlet property="inspirationCell" destination="8cg-7F-H1q" id="JGp-a8-mK4"/>
                         <outlet property="preferenceTbl" destination="zDg-lS-6Ri" id="E87-rk-mSz"/>
-                        <outlet property="quartzview" destination="5Rz-I0-lqT" id="gwy-DK-Fgw"/>
                         <outlet property="reminderCell" destination="yGi-gQ-m4j" id="YEF-di-EEG"/>
                         <outlet property="snoozeCell" destination="34Z-Ug-dcO" id="3es-ce-wjd"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WtU-QN-rIW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="786" y="576"/>
+            <point key="canvasLocation" x="647" y="735"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="Mss-38-mDl">
+            <objects>
+                <tableViewController id="Yjg-a4-OAR" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5Oy-us-K5g">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="4C3-JY-qf2">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4C3-JY-qf2" id="wRe-wO-tnp">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Future Notifications" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9X-Jj-hsH">
+                                            <rect key="frame" x="103" y="15" width="159" height="21"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="notif" id="ruR-Sw-kDG">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ruR-Sw-kDG" id="MBP-Bd-Ryl">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="jUr-be-Ayw">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jUr-be-Ayw" id="k4X-Zt-HnX">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idb-Jh-ZfZ">
+                                            <rect key="frame" x="228" y="5" width="35" height="30"/>
+                                            <state key="normal" title="Back">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Yjg-a4-OAR" id="HUQ-HG-FLn"/>
+                            <outlet property="delegate" destination="Yjg-a4-OAR" id="ft8-F2-BTq"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4a1-QI-c6z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1129" y="943"/>
         </scene>
         <!--Preferences View Controller-->
         <scene sceneID="skD-Tx-XsN">
@@ -400,7 +453,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1291" y="771"/>
+            <point key="canvasLocation" x="1675" y="121"/>
         </scene>
         <!--Add Task View Controller-->
         <scene sceneID="NUq-79-e2B">
@@ -508,7 +561,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="/Images.xcassets/SettingsIcon.imageset/rsz_settings_3_filled-50.png" width="16" height="16"/>
         <image name="SettingsIcon" width="30" height="30"/>
         <image name="TasksIcon" width="30" height="30"/>
     </resources>

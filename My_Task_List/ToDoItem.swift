@@ -34,6 +34,8 @@ var iProductivList = savediProductivList!
 class TodoList {
     
     var todoItems = [TodoItem]()
+    
+    
  
     
     
@@ -56,14 +58,22 @@ class TodoList {
     }
     
     
+    func deleteAndScheduleNext() {
+        todoItems.removeAtIndex(0)
+        println(todoItems.count)
+        if (todoItems.count > 0) {
+            scheduleNextBatch(NSDate())
+        } 
+    }
     
     
-    func scheduleNextBatch() {
+    func scheduleNextBatch(start: NSDate) {
         var item = todoItems[0]
         var alert = "Time to get started with \(item.title)"
         
-        var start = item.start.dateByAddingTimeInterval(30)
-        var end = item.start.dateByAddingTimeInterval(item.dur + 30)
+        var start = start.dateByAddingTimeInterval(20)
+        println(start)
+        var end = start.dateByAddingTimeInterval(item.dur + 20)
         
         scheduleNotif(item, alertBody: alert, firedate: start)
         
@@ -82,9 +92,10 @@ class TodoList {
         
         var item = todoItems[0]
         var timeInterval = Double(mysettings.snoozeNo * 60)
-        item.start = NSDate().dateByAddingTimeInterval(timeInterval)
+        var start = NSDate().dateByAddingTimeInterval(timeInterval)
+
         deleteNotifications()
-        scheduleNextBatch()
+        scheduleNextBatch(start)
         
     }
     
