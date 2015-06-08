@@ -5,7 +5,7 @@
 //  Created by Faithful Okoye on 6/3/15.
 //  Copyright (c) 2015 Uchenna Okoye IOS Design. All rights reserved.
 //
-
+import darwin
 import UIKit
 
 
@@ -16,13 +16,16 @@ extension NSDate {
     
 }
 
+var canEnableSchedBtn = true
 
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
 
     
-    @IBOutlet var tblTasks : UITableView!
+    @IBOutlet weak var schdBtn: UIButton!
+    @IBOutlet weak var cancelNotifBtn: UIButton!
     
+    @IBOutlet var tblTasks : UITableView!
     @IBOutlet weak var dateBtn: UIButton!
     
     
@@ -32,6 +35,65 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        
+        
+        var schedulesExist = (UIApplication.sharedApplication().scheduledLocalNotifications.count > 0)
+        
+        
+        let savedList = appDelegate.savediProductivList
+        if let savedInstance = savedList {
+            savediProductivList = savedInstance
+            savedtaskMgr = savedInstance.convertIProductivListToTaskMgr()
+            savedDate = savedInstance.todoItems[0].start
+        } else {
+            savediProductivList = TodoList()
+        }
+        
+        let savedsettingsInstance = appDelegate.savedSettings
+        if let savedInstance = savedsettingsInstance {
+            
+            savedSettings = savedInstance
+            
+            
+        } else {
+            savedSettings = settings(snooze: 5, reminder: 2, inspiration: 2)
+        }
+        
+        let savedtaskInstance = appDelegate.savedtaskMgr
+        if let savedInstance = savedtaskInstance {
+            
+            savedtaskMgr = savedInstance
+            
+            
+        } else {
+            savedtaskMgr = TaskManager()
+        }
+        
+        
+        let savedDateInstance = appDelegate.savedDate
+        if let savedInstance = savedDateInstance {
+            
+            savedDate = savedInstance
+            
+            
+        } else {
+            savedDate = NSDate()
+        }
+
+    
+    
+    
+        if schedulesExist {
+            schdBtn.enabled = false
+            cancelNotifBtn.enabled = true
+        } else {
+            schdBtn.enabled = canEnableSchedBtn
+            cancelNotifBtn.enabled = false
+            
+        }
+        
+        
         
         tblTasks.allowsSelection = true
         tblTasks.allowsSelectionDuringEditing = true
@@ -40,19 +102,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         
         taskMgr.addTask("dance", dur: 30, timeformat: 0)
-       /* taskMgr.addTask("jump", dur: 30, timeformat: 0)
-        taskMgr.addTask("dance", dur: 30, timeformat: 0)
-        taskMgr.addTask("jump", dur: 30, timeformat: 0)
-        taskMgr.addTask("dance", dur: 30, timeformat: 0)
-        taskMgr.addTask("jump", dur: 30, timeformat: 0)
-        taskMgr.addTask("dance", dur: 30, timeformat: 0)
-        taskMgr.addTask("jump", dur: 30, timeformat: 0)
-        taskMgr.addTask("dance", dur: 30, timeformat: 0)
-        taskMgr.addTask("dance", dur: 30, timeformat: 0)
-        taskMgr.addTask("jump", dur: 30, timeformat: 0)
-        taskMgr.addTask("dance", dur: 30, timeformat: 0)
-        
-*/
         
         var formatter = NSDateFormatter()
         formatter.dateFormat = "MM/dd/yy hh:mm a"
@@ -72,7 +121,11 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     
+
+    
+    
     //Returning to view
+    
     
     
     func verifyaddStatus() {
@@ -206,12 +259,17 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         var start = date
         var end : NSDate?
-        var todoItems = [TodoItem]()
+       //var todoItems = [TodoItem]()
+        
+        
         
         for (var i = 0; i < taskMgr.tasks.count; i++) {
             
             var task = taskMgr.tasks[i]
             var title = task.name
+            var dur =  Double((task.timeformat == 0) ? (task.dur * 60) : (task.dur * 60 * 60))
+            iProductivList.todoItems.append(TodoItem(start: start, dur: dur, title: title, UUID: NSUUID().UUIDString, timeformat: task.timeformat))
+            /*
             var timeInterval = Double((task.timeformat == 0) ? (task.dur * 60) : (task.dur * 60 * 60))
             end = date.dateByAddingTimeInterval(timeInterval)
             
@@ -228,14 +286,29 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             
             start = end!
+
+*/
             
         }
+       
+        iProductivList.scheduleNextBatch()
+        
         
         let title = "iProductiv List Scheduled"
         let message = "All items scheduled"
-        let alertController = UIAlertController(title: "Cancel", message: message, preferredStyle: .Alert)
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         
-        let cancelAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "OK", style: .Cancel)
+            {
+                action in
+                self.schdBtn.enabled = false
+                self.cancelNotifBtn.enabled = true
+                
+              
+                
+            }
+
+    
         alertController.addAction(cancelAction)
         
         presentViewController(alertController, animated: true, completion: nil)
@@ -244,27 +317,35 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         
         
+    }
+   
+    
+    @IBAction func cancelNotifications(sender: UIButton) {
+        
+        iProductivList.deleteItems()
+        iProductivList.deleteNotifications()
+        let title = "iProductiv List Canceled"
+        let message = "All items canceled"
+        let alertController = UIAlertController(title: "Cancel", message: message, preferredStyle: .Alert)
+        
+        let cancelAction = UIAlertAction(title: "OK", style: .Cancel)
+            {
+                action in
+                self.schdBtn.enabled = true
+                self.cancelNotifBtn.enabled = false
+                
+                
+                
+        }
+        
+        alertController.addAction(cancelAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
+        
+        
         
     }
-    
-    
-    /*
 
-    func removeItem(item: TodoItem) {
-    for notification in UIApplication.sharedApplication().scheduledLocalNotifications as! [UILocalNotification] { // loop through notifications...
-    if (notification.userInfo!["UUID"] as! String == item.UUID) { // ...and cancel the notification that corresponds to this TodoItem instance (matched by UUID)
-    UIApplication.sharedApplication().cancelLocalNotification(notification) // there should be a maximum of one match on UUID
-    break
-    }
-    }
-    
-    if var todoItems = NSUserDefaults.standardUserDefaults().dictionaryForKey(ITEMS_KEY) {
-    todoItems.removeValueForKey(item.UUID)
-    NSUserDefaults.standardUserDefaults().setObject(todoItems, forKey: ITEMS_KEY) // save/overwrite todo item list
-    }
-    }
-
-*/
     /*
     // MARK: - Navigation
 

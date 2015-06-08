@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B004613E1B22235E00B1D07A /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B004613D1B22235E00B1D07A /* SecondViewController.swift */; };
-		B00461401B222EFB00B1D07A /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = B004613F1B222EFB00B1D07A /* Checkbox.swift */; };
-		B00461421B222F9000B1D07A /* CheckboxDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00461411B222F9000B1D07A /* CheckboxDelegate.swift */; };
 		B00461441B22414000B1D07A /* preferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00461431B22414000B1D07A /* preferencesViewController.swift */; };
 		B04763321B2399CA00DE902A /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04763311B2399CA00DE902A /* ToDoItem.swift */; };
 		B06850621B1F561A00903F12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06850611B1F561A00903F12 /* AppDelegate.swift */; };
@@ -23,6 +21,7 @@
 		B06850861B1FD3A600903F12 /* AddTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06850851B1FD3A500903F12 /* AddTaskTableViewController.swift */; };
 		B06850881B1FDE7600903F12 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06850871B1FDE7600903F12 /* AddTaskViewController.swift */; };
 		B068508A1B2126B300903F12 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06850891B2126B300903F12 /* DateViewController.swift */; };
+		CECCDD251B25177900D8D425 /* QuartzView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCDD241B25177900D8D425 /* QuartzView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +36,6 @@
 
 /* Begin PBXFileReference section */
 		B004613D1B22235E00B1D07A /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		B004613F1B222EFB00B1D07A /* Checkbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
-		B00461411B222F9000B1D07A /* CheckboxDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxDelegate.swift; sourceTree = "<group>"; };
 		B00461431B22414000B1D07A /* preferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = preferencesViewController.swift; sourceTree = "<group>"; };
 		B04763311B2399CA00DE902A /* ToDoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		B068505C1B1F561900903F12 /* My_Task_List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = My_Task_List.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +53,7 @@
 		B06850851B1FD3A500903F12 /* AddTaskTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTaskTableViewController.swift; sourceTree = "<group>"; };
 		B06850871B1FDE7600903F12 /* AddTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		B06850891B2126B300903F12 /* DateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
+		CECCDD241B25177900D8D425 /* QuartzView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuartzView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +98,7 @@
 		B068505E1B1F561900903F12 /* My_Task_List */ = {
 			isa = PBXGroup;
 			children = (
+				CECCDD241B25177900D8D425 /* QuartzView.swift */,
 				B06850611B1F561A00903F12 /* AppDelegate.swift */,
 				B06850631B1F561A00903F12 /* ViewController.swift */,
 				B06850651B1F561A00903F12 /* Main.storyboard */,
@@ -108,8 +107,6 @@
 				B06850831B1F598600903F12 /* FirstViewController.swift */,
 				B06850811B1F568600903F12 /* TaskManager.swift */,
 				B04763311B2399CA00DE902A /* ToDoItem.swift */,
-				B004613F1B222EFB00B1D07A /* Checkbox.swift */,
-				B00461411B222F9000B1D07A /* CheckboxDelegate.swift */,
 				B06850681B1F561B00903F12 /* Images.xcassets */,
 				B068506A1B1F561C00903F12 /* LaunchScreen.xib */,
 				B068505F1B1F561900903F12 /* Supporting Files */,
@@ -246,14 +243,13 @@
 				B06850821B1F568600903F12 /* TaskManager.swift in Sources */,
 				B04763321B2399CA00DE902A /* ToDoItem.swift in Sources */,
 				B00461441B22414000B1D07A /* preferencesViewController.swift in Sources */,
-				B00461401B222EFB00B1D07A /* Checkbox.swift in Sources */,
 				B06850881B1FDE7600903F12 /* AddTaskViewController.swift in Sources */,
 				B068508A1B2126B300903F12 /* DateViewController.swift in Sources */,
-				B00461421B222F9000B1D07A /* CheckboxDelegate.swift in Sources */,
 				B06850641B1F561A00903F12 /* ViewController.swift in Sources */,
 				B06850621B1F561A00903F12 /* AppDelegate.swift in Sources */,
 				B06850841B1F598600903F12 /* FirstViewController.swift in Sources */,
 				B06850861B1FD3A600903F12 /* AddTaskTableViewController.swift in Sources */,
+				CECCDD251B25177900D8D425 /* QuartzView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,8 +377,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = My_Task_List/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = My_Task_List;
 			};
 			name = Debug;
 		};
@@ -391,8 +388,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = My_Task_List/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = My_Task_List;
 			};
 			name = Release;
 		};
@@ -409,8 +407,9 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = My_Task_ListTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = My_Task_ListTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/My_Task_List.app/My_Task_List";
 			};
 			name = Debug;
@@ -424,8 +423,9 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = My_Task_ListTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = My_Task_ListTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/My_Task_List.app/My_Task_List";
 			};
 			name = Release;

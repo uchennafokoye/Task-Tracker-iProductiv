@@ -8,7 +8,8 @@
 
 import UIKit
 
-var date = NSDate()
+var savedDate : NSDate?
+var date = savedDate!
 
 
 class DateViewController: UIViewController {

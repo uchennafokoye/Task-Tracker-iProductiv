@@ -24,10 +24,11 @@ class settings {
     
 }
 
-var mysettings = settings(snooze: 5, reminder: 2, inspiration: 2)
+var savedSettings : settings?
+var mysettings = savedSettings!
 
 
-class SecondViewController: UITableViewController {
+class SecondViewController: UITableViewController{
 
     @IBOutlet weak var snoozeCell: UITableViewCell!
     @IBOutlet weak var reminderCell: UITableViewCell!
@@ -35,8 +36,12 @@ class SecondViewController: UITableViewController {
     
     @IBOutlet var preferenceTbl: UITableView!
     
+    @IBOutlet weak var quartzview: QuartzView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        randomGenerator = arc4random() % 6
+
         snoozeCell.detailTextLabel!.text = "5 minutes"
         reminderCell.detailTextLabel!.text = "Start & End"
         inspirationCell.detailTextLabel!.text = "Art & Quotes"
@@ -47,7 +52,9 @@ class SecondViewController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        
+        randomGenerator = arc4random() % 6
+        quartzview.reloadInputViews()
+
         var snooze = mysettings.snoozeNo
         var reminder = mysettings.reminderSegment
         var inspiration = mysettings.inspirationSegment
@@ -96,7 +103,8 @@ class SecondViewController: UITableViewController {
 
         
     }
-
+    
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

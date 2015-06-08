@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="buE-8k-ijo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="buE-8k-ijo">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--iTasks-->
@@ -27,7 +27,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="iProductiv" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BNV-QQ-yaj">
-                                <rect key="frame" x="36" y="37" width="248.5" height="32"/>
+                                <rect key="frame" x="36" y="37" width="249" height="55"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="40"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -78,14 +78,26 @@
                                 <color key="textColor" red="0.40000000596046448" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8Q-Uc-uvz">
+                                <rect key="frame" x="66" y="478" width="156" height="33"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                <state key="normal" title="Cancel all Notifications">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelNotifications:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Zap-XT-EXt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="iTasks" id="NLr-ao-Fdx"/>
+                    <tabBarItem key="tabBarItem" title="iTasks" image="TasksIcon" selectedImage="TasksIcon" id="NLr-ao-Fdx"/>
                     <connections>
                         <outlet property="addBtn" destination="CUS-xx-ZwK" id="N8w-Tf-IIV"/>
+                        <outlet property="cancelNotifBtn" destination="x8Q-Uc-uvz" id="Rck-m4-MPQ"/>
                         <outlet property="dateBtn" destination="jx4-vP-Uts" id="KvP-KN-rVL"/>
                         <outlet property="dateLabel" destination="HuK-Fe-xUu" id="IdD-tJ-Csi"/>
+                        <outlet property="schdBtn" destination="hpH-vL-Ubt" id="3yT-Ak-z42"/>
                         <outlet property="tblTasks" destination="dCd-Xj-Tpn" id="YBX-cv-jYC"/>
                     </connections>
                 </viewController>
@@ -250,16 +262,34 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Inspiration" id="43J-Dp-STT">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="158" id="o2R-aJ-4cv">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o2R-aJ-4cv" id="zQD-2o-Ay3">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Rz-I0-lqT" customClass="QuartzView" customModule="My_Task_List" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="157"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <gestureRecognizers/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="kek-9U-eIo" id="Xf6-Bz-euq"/>
                             <outlet property="delegate" destination="kek-9U-eIo" id="5ZI-hz-PPI"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="iSettings" id="hBv-I5-tS9"/>
+                    <tabBarItem key="tabBarItem" title="iSettings" image="SettingsIcon" selectedImage="/Images.xcassets/SettingsIcon.imageset/rsz_settings_3_filled-50.png" id="hBv-I5-tS9"/>
                     <connections>
-                        <outlet property="inspirationCell" destination="8cg-7F-H1q" id="4LZ-CO-qTG"/>
+                        <outlet property="inspirationCell" destination="8cg-7F-H1q" id="JGp-a8-mK4"/>
                         <outlet property="preferenceTbl" destination="zDg-lS-6Ri" id="E87-rk-mSz"/>
+                        <outlet property="quartzview" destination="5Rz-I0-lqT" id="gwy-DK-Fgw"/>
                         <outlet property="reminderCell" destination="yGi-gQ-m4j" id="YEF-di-EEG"/>
                         <outlet property="snoozeCell" destination="34Z-Ug-dcO" id="3es-ce-wjd"/>
                     </connections>
@@ -292,7 +322,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="min" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3s-gU-dGm">
-                                <rect key="frame" x="247" y="124" width="42.5" height="23.5"/>
+                                <rect key="frame" x="247" y="124" width="43" height="24"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -312,7 +342,7 @@
                                 </segments>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reminder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKD-yo-7xd">
-                                <rect key="frame" x="32" y="185" width="90" height="23.5"/>
+                                <rect key="frame" x="32" y="185" width="90" height="24"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -346,7 +376,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="iSettings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJZ-jm-ADp">
-                                <rect key="frame" x="41" y="37" width="248.5" height="55"/>
+                                <rect key="frame" x="41" y="37" width="249" height="55"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="40"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -412,7 +442,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="iTasks" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9IF-DS-W8i">
-                                <rect key="frame" x="46" y="47" width="248.5" height="55"/>
+                                <rect key="frame" x="46" y="47" width="249" height="55"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="40"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -477,4 +507,9 @@
             <point key="canvasLocation" x="245" y="305"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="/Images.xcassets/SettingsIcon.imageset/rsz_settings_3_filled-50.png" width="16" height="16"/>
+        <image name="SettingsIcon" width="30" height="30"/>
+        <image name="TasksIcon" width="30" height="30"/>
+    </resources>
 </document>

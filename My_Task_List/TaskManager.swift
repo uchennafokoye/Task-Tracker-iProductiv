@@ -8,7 +8,8 @@
 
 import UIKit
 
-var taskMgr: TaskManager = TaskManager()
+var savedtaskMgr : TaskManager?
+var taskMgr: TaskManager = savedtaskMgr!
 
 struct task {
     var name = "Un-Named"
@@ -32,4 +33,6 @@ class TaskManager: NSObject {
     func allItems() -> [task] {
        return tasks
     }
+    
+
 }
