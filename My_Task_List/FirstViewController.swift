@@ -5,7 +5,6 @@
 //  Created by Faithful Okoye on 6/3/15.
 //  Copyright (c) 2015 Uchenna Okoye IOS Design. All rights reserved.
 //
-import darwin
 import UIKit
 
 
@@ -36,7 +35,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         
     
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         
        // var schedulesExist = (UIApplication.sharedApplication().scheduledLocalNotifications.count > 0)
@@ -205,7 +204,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("AddTaskViewController") as AddTaskViewController
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("AddTaskViewController") as! AddTaskViewController
         vc.index = indexPath.row
         vc.itemnotexist = false
         

@@ -120,9 +120,8 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate {
     }
    
     
-     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        self.view.endEditing(true)
-
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+         self.view.endEditing(true)
     }
     
     

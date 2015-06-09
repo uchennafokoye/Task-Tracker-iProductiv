@@ -12,8 +12,6 @@
 	<dict>
 		<key>9A3AD2EDB296CB32CC8AE9137F13718453D3FD84</key>
 		<string>https://github.com/uchennafokoye/Task-list.git</string>
-		<key>E3116D40A2D8A4D3E431E982181AFEC258BFEDE7</key>
-		<string>https://github.com/uchennafokoye/IOS_class_projects.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>My_Task_List.xcodeproj</string>
@@ -21,8 +19,6 @@
 	<dict>
 		<key>9A3AD2EDB296CB32CC8AE9137F13718453D3FD84</key>
 		<string>../..</string>
-		<key>E3116D40A2D8A4D3E431E982181AFEC258BFEDE7</key>
-		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/uchennafokoye/Task-list.git</string>
@@ -32,14 +28,6 @@
 	<string>9A3AD2EDB296CB32CC8AE9137F13718453D3FD84</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>E3116D40A2D8A4D3E431E982181AFEC258BFEDE7</string>
-			<key>IDESourceControlWCCName</key>
-			<string></string>
-		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

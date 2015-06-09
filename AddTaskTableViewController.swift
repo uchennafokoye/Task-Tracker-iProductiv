@@ -27,11 +27,11 @@ class AddTaskTableViewController: UITableViewController, UITextFieldDelegate {
 
     // MARK: - Table view data source
 
-    
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        self.view.endEditing(true)
-        
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+       self.view.endEditing(true)
     }
+    
+   
     
 
     

@@ -90,36 +90,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 3. Notification Registration *****************************************
         
         let types = UIUserNotificationType.Alert | UIUserNotificationType.Sound
-        let settings = UIUserNotificationSettings(forTypes: types, categories: NSSet(object: notificationCategory))
+        let settings = UIUserNotificationSettings(forTypes: types, categories: Set(arrayLiteral: notificationCategory))
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
     }
-    /*
-    // Schedule the Notifications with repeat
-    func scheduleNotification() {
-        //UIApplication.sharedApplication().cancelAllLocalNotifications()
-        
-        // Schedule the notification ********************************************
-        
-        let notification = UILocalNotification()
-        notification.alertBody = "Hey! Update your counter ;)"
-        notification.soundName = UILocalNotificationDefaultSoundName
-        notification.fireDate = NSDate().dateByAddingTimeInterval(10)
-        notification.category = categoryID
-        notification.repeatInterval = NSCalendarUnit.CalendarUnitMinute
-        
-        UIApplication.sharedApplication().scheduleLocalNotification(notification)
-        
-    }
-
-    
-    
-    // MARK: Application Delegate
-    
-    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
-        scheduleNotification()
-    }
-    */
-    
+       
     func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
         
         var savedList = savediProductivList!
