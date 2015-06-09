@@ -39,7 +39,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         
         
-        var schedulesExist = (UIApplication.sharedApplication().scheduledLocalNotifications.count > 0)
+       // var schedulesExist = (UIApplication.sharedApplication().scheduledLocalNotifications.count > 0)
         
         
         let savedList = appDelegate.savediProductivList
@@ -84,7 +84,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     
     
-    
+    /*
         if schedulesExist {
             schdBtn.enabled = false
             cancelNotifBtn.enabled = true
@@ -93,7 +93,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cancelNotifBtn.enabled = false
             
         }
-        
+        */
         
         
         tblTasks.allowsSelection = true
@@ -137,7 +137,18 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     override func viewWillAppear(animated: Bool) {
-               
+        
+        
+        var schedulesExist = (UIApplication.sharedApplication().scheduledLocalNotifications.count > 0)
+        if schedulesExist {
+            schdBtn.enabled = false
+            cancelNotifBtn.enabled = true
+        } else {
+            schdBtn.enabled = canEnableSchedBtn
+            cancelNotifBtn.enabled = false
+            
+        }
+        
         tblTasks.reloadData()
         var formatter = NSDateFormatter()
         formatter.dateFormat = "MM/dd/yy hh:mm a"
