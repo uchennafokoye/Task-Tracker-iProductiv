@@ -65,29 +65,6 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
         return cell
     }
     
-    /*
-    
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    
-    
-    
-    
-    // UITableViewDelete
-    
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
-        if editingStyle == UITableViewCellEditingStyle.Delete {
-            notifMgr.deleteNotif(indexPath.row)
-            notifTbl.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-            
-        }
-        
-        
-        
-    }
-    */
     
     @IBAction func swipeHandler(sender: UISwipeGestureRecognizer) {
          self.dismissViewControllerAnimated(true, completion: nil)
